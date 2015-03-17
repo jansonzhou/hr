@@ -1,0 +1,14 @@
+extends layout
+block content
+  .container#main
+    .row
+      .post-list.col-md-8
+        .row
+          each item in article
+           .col-md-12.post-box
+             .col-md-3.cover
+              img(src='#{item.imgurl}',width='100px', height='100px') 
+             .col-md-9.post-info
+               h3: a(href='/') #{item.title}
+               p  #{item.pre}
+             

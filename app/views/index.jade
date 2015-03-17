@@ -1,0 +1,42 @@
+extends layout
+block content
+ #myCarousel.carousel.slide(data-ride='carousel')
+    ol.carousel-indicators
+       li.active(data-target='#myCarousel', data-slide-to='0')
+       li(data-target='#myCarousel', data-slide-to='1')
+       li(data-target='#myCarousel', data-slide-to='2')
+    .carousel-inner(role='listbox')
+      .item.active
+         img(src='/images/hr1.jpg', alt='First slide') 
+         .container
+           .carousel-caption
+             h1 headline
+             p
+               | odio
+             p
+               a.btn.btn-lg.btn-primary(href='#', role='button') Learn More
+
+      .item
+         img(src='/images/hr2.jpg', alt='Sirst slide') 
+         .container
+           .carousel-caption
+             h1 headline
+             p
+               | odio
+             p
+               a.btn.btn-lg.btn-primary(href='#', role='button') Learn More
+    a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
+      span.glyphicon.glyphicon-chevron-left
+ 
+    a.right.carousel-control(href='#myCarousel', role='button', data-slide='next')
+      span.glyphicon.glyphicon-chevron-right
+
+ .container.marketing
+    .row
+      each item in articles
+       .col-lg-4
+         img.img-circle(src='#{item.imgurl}',style="width:140px;height:140px")
+         h4 #{item.title}
+         p
+           | #{item.poster}
+         p

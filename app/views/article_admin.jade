@@ -1,0 +1,40 @@
+extends layout
+block content
+  hr
+  .container
+    .row
+      .col-md-8
+        form.form-horizontal(method="post",action="/admin/article", enctype="multipart/form-data")
+          .form-group
+            label.col-sm-2.control-label(for="inputCategory")  分类
+            .col-sm-10
+              input#inputCategory.form-control(type="text", name="article[categoryName]", value=article.categoryName)
+          .form-group
+            label.col-sm-2.control-label 分类选择
+            each cat in categories
+              lable.radio-inline
+                if article.category
+                  input(type="radio", name="article[category]", value=cat._id, checked=cat._id.toString()==article.category.toString())             
+                else
+                  input(type="radio", name="article[category]", value=cat._id) 
+                | #{cat.name}
+          .form-group
+            label.col-sm-2.control-label(for="inputTitle") 标题
+            .col-sm-10
+              input#inputTitle.form-control(type="text", name="article[title]", value=article.title)
+          .form-group
+            label.col-sm-2.control-label(for="inputImgurl") 图片
+            .col-sm-10
+              input#inputTitle.form-control(type="text", name="article[imgurl]", value=article.imgurl)
+          .form-group
+            label.col-sm-2.control-label(for="inputInstroduct") 简介
+            .col-sm-10
+              input#inputInstroduct.form-control(type="text", name="article[instroduct]", value=article.instroduct)
+          .form-group
+            label.col-sm-2.control-label(for="inputPost") 内容
+            .col-sm-10
+              textarea#inputPost.form-control(type="text", name="article[post]",rows="15")= article.post
+          .form-group
+            .col-sm-offset-2.col-sm-10
+              button.btn.btn-default(type="submit") 录入
+
